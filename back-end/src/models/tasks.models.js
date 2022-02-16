@@ -8,6 +8,13 @@ const createTask = async  (task) => {
     return insertedId;
 };
 
+const getAllTasks = async (task) => {
+    const conn = await connection();
+    const query = await conn.collection('tasks').find().toArray();
+    return query;
+};
+
 module.exports = {
     createTask,
+    getAllTasks,
 };

@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const { createTask } = require('../models/tasks.models');
+const { createTask, getAllTasks } = require('../models/tasks.models');
 const { errorMessage, allFieldsMessage } = require('../utils/errorMessages');
 
 const taskSchema = Joi.object({
@@ -23,6 +23,13 @@ const createTaskRules = async (task) => {
 
 }
 
+const getAllTasksRules = async () => {
+    const allTasks = await getAllTasks();
+    return allTasks;
+}
+
+
 module.exports = {
     createTaskRules,
+    getAllTasksRules,
 };
