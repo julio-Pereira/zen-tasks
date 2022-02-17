@@ -1,27 +1,28 @@
 import { 
   BrowserRouter as Router,
-  Switch,
-  Route,
+  Routes,
+  Route
 } from 'react-router-dom';  
 import './App.css';
+import TaskList from './components/TaskList/TaskList';
+import { Provider } from './context/zentaskContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className='App'>
+        <header className='App-header'>
+          <span><h2>Zen Task Todo List</h2></span>
+          <Provider>
+            <Routes>
+                <Route exact={true} path='/' element={<TaskList />}>
+                  <TaskList />
+                </Route>
+            </Routes>
+          </Provider>
+        </header>
+      </div>
+    </Router>
   );
 }
 
